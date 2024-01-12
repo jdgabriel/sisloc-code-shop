@@ -1,0 +1,14 @@
+
+@url = http://localhost:3000
+@car_info = clray1u76000k13v4qpedmb86
+
+#name 
+GET {{url}}/car
+###
+
+@query = tesla
+GET {{url}}/car?q={{query}}
+
+###
+GET {{url}}/car/{{car_info}}
+
