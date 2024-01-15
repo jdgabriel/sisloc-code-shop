@@ -54,7 +54,7 @@ const cars: Prisma.CarCreateInput[] = Array(10)
             },
             {
               info: 'Consumo',
-              description: String(faker.number.int({ min: 3, max: 12 })),
+              description: `${faker.number.int({ min: 3, max: 12 })} km/L`,
             },
             {
               info: 'Combustível',
