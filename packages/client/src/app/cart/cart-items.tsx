@@ -18,8 +18,11 @@ export default function CartItems() {
     <div className="space-y-2">
       {cart.map(({ car, mode, cartId, amount }) => (
         <Card key={cartId} className="overflow-hidden">
-          <CardHeader className="py-1 px-4">
-            <CardTitle className="flex items-center justify-between">
+          <CardHeader className="flex gap-3 flex-row py-1 px-4">
+            <CardTitle className="flex pt-2 items-center justify-between">
+              <img className="rounded-lg w-32" src={car.image_url} alt="" />
+            </CardTitle>
+            <CardTitle className="flex flex-1 items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="text-lg">{car.name}</span>
                 <span className="text-sm text-zinc-500">{car.brand}</span>
