@@ -1,5 +1,12 @@
-import { MoveRight } from 'lucide-react'
-import { Button } from './ui/button'
+'use client'
+
+import { Car } from '@/api/types/car'
+import { cn } from '@/lib/utils'
+import { CartProps, useCartStore } from '@/store/cart'
+import { formatPrice } from '@/utils/format-price'
+import { MoveRight, ShoppingCart } from 'lucide-react'
+import Link from 'next/link'
+import { Button, buttonVariants } from './ui/button'
 import {
   Card,
   CardContent,
@@ -10,13 +17,19 @@ import {
 } from './ui/card'
 
 interface CarCardProps {
-  car: any
+  car: Car
 }
 
 export function CarCard({ car }: CarCardProps) {
+  const addToCart = useCartStore((state) => state.addToCart)
+
+  function handleAddToCart(cart: CartProps) {
+    addToCart(cart)
+  }
+
   return (
     <Card key={car.id} className="overflow-hidden">
-      <CardHeader className="h-32 overflow-hidden p-0">
+      <CardHeader className="h-32 overflow-hidden p-0 object-center">
         <img className="bg-center" src={car.image_url} alt="" />
       </CardHeader>
       <CardHeader className="py-2 px-4">
@@ -25,26 +38,33 @@ export function CarCard({ car }: CarCardProps) {
       </CardHeader>
       <CardContent className="py-2 px-4">
         <p className="text-sm text-zinc-800">
-          {formatPrice(car.mode[0].priceInCents)}/por dia
+          {formatPrice(car.modes[0].priceInCents)}/por dia
         </p>
       </CardContent>
-      <CardFooter className="p-2">
-        <Button
-          className="flex items-center justify-between w-full"
-          size={'sm'}
-          variant={'outline'}
+      <CardFooter className="flex items-center gap-3 p-2">
+        <Link
+          href={`/${car.id}`}
+          className={cn(
+            buttonVariants({ size: 'sm', variant: 'outline' }),
+            'flex-1 items-center justify-between',
+          )}
         >
           Ver detalhes
-          <MoveRight className="opacity-35" />
+          <MoveRight className="w-4 h-4 text-zinc-500" />
+        </Link>
+        <Button
+          size={'sm'}
+          variant={'ghost'}
+          onClick={() =>
+            handleAddToCart({
+              car,
+              mode: car.modes[0],
+            })
+          }
+        >
+          <ShoppingCart className="w-4 h-4 text-zinc-500" />
         </Button>
       </CardFooter>
     </Card>
   )
-}
-
-function formatPrice(price: number) {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(price / 1000)
 }

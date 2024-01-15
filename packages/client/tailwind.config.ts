@@ -19,7 +19,8 @@ const config = {
     },
     extend: {
       gridTemplateColumns: {
-        marketplace: 'repeat(5, 1fr)',
+        marketplace: 'repeat(auto-fill, minmax(250px, 1fr));',
+        cart: '1fr 30rem',
       },
       colors: {
         border: 'hsl(var(--border))',
