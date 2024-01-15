@@ -1,8 +1,18 @@
 {
   "name": "sisloc-code-shop",
-  "version": "development-0.0.0",
+  "version": "0.0.0",
   "description": "",
   "keywords": [],
   "author": "Gabriel Duarte <jds.gabrielduarte@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "dev": "npm-run-all dev:server dev:client",
+    "dev:server": "pnpm --filter server start:dev",
+    "dev:server:database": "pnpm --filter server docker:setup",
+    "dev:server:prisma": "pnpm --filter server prisma:push",
+    "dev:client": "pnpm --filter client dev"
+  },
+  "dependencies": {
+    "npm-run-all": "4.1.5"
+  }
 }
