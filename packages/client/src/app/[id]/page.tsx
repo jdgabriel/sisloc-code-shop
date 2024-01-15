@@ -34,7 +34,7 @@ export default function CarDetail({ params }: { params: { id: string } }) {
       )}
 
       {isDone && data && (
-        <div className="grid grid-cols-cart gap-3">
+        <div className="flex flex-col md:grid md:grid-cols-cart gap-3">
           <div className="flex flex-col rounded-lg overflow-hidden">
             <img src={data.car.image_url} alt={data.car.name} />
           </div>
