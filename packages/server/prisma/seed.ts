@@ -14,7 +14,7 @@ const cars: Prisma.CarCreateInput[] = Array(10)
       search_params: String(`${carName} ${cardBrand}`).toLowerCase(),
       image_url: faker.image.urlPlaceholder({
         width: 640,
-        height: 480,
+        height: 300,
         text: carName,
         backgroundColor: '#000',
         textColor: '#FFF',

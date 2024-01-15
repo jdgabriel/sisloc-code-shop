@@ -26,12 +26,17 @@ pnpm dev:server:database
 pnpm dev:server:prisma
 ```
 
-4. Run `server` and `client` in parallel
+4. Run `server`
 ```bash
 pnpm dev
 ```
 
-5. Finally, you can see in localhost
+5. Run `client`
+```bash
+pnpm dev:client
+```
+
+6. Finally, you can see in localhost
 ```bash
 Client: http://localhost:3001/
 Server: http://localhost:3000/
