@@ -14,10 +14,6 @@ export class CarService {
       },
       include: {
         modes: {
-          take: 1,
-          where: {
-            mode: 'DAY',
-          },
           select: {
             mode: true,
             priceInCents: true,

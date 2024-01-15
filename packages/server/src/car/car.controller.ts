@@ -6,12 +6,14 @@ export class CarController {
   constructor(private readonly carService: CarService) {}
 
   @Get()
-  findAll(@Query() { q }: { q: string }) {
-    return this.carService.findAll(q);
+  async findAll(@Query() { q }: { q: string }) {
+    const cars = await this.carService.findAll(q);
+    return { cars };
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.carService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    const car = await this.carService.findOne(id);
+    return { car };
   }
 }
