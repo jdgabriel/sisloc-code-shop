@@ -28,7 +28,7 @@ pnpm dev:server:prisma
 
 4. Run `server`
 ```bash
-pnpm dev
+pnpm dev:server
 ```
 
 5. Run `client`
